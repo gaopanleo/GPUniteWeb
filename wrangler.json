@@ -1,0 +1,16 @@
+{
+  "compatibility_date": "2025-04-01",
+  "main": "src/index.ts",
+  "name": "gpuniteweb",
+  "upload_source_maps": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "5d8881d4-1f9a-409b-93dd-aba68865661d",
+      "database_name": "GPUniteWeb"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
