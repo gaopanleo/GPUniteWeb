@@ -1,14 +1,21 @@
 import { renderHtml } from "./renderHtml";
-
+import { homeHtml } from "./home";
 export default {
   async fetch(request, env) {
-    const stmt = env.DB.prepare("SELECT * FROM comments LIMIT 3");
-    const { results } = await stmt.all();
+   /* const stmt = env.DB.prepare("SELECT * FROM comments LIMIT 3");
+    const { results } = await stmt.all(); */
 
-    return new Response(renderHtml(JSON.stringify(results, null, 2)), {
+   /* return new Response(renderHtml(JSON.stringify(results, null, 2)), {
       headers: {
         "content-type": "text/html",
       },
-    });
+    }); */
+	
+	return new Response(homeHtml(JSON.stringify(results, null, 2)), {
+	  headers: {
+	    "content-type": "text/html",
+	  },
+	});
+	
   },
 } satisfies ExportedHandler<Env>;
