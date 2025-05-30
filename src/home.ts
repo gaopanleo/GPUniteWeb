@@ -1,4 +1,4 @@
-export function homeHtml(content: string) {
+export function homeHtml() {
   return `
   <!DOCTYPE html>
 <html lang="en">
