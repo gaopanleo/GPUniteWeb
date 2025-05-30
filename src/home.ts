@@ -195,6 +195,54 @@ export function homeHtml() {
                 }
             });
         };
+       
+  <!-- 邮箱加入 -->
+  document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+  const emailInput = form.querySelector('input[type="email"]');
+  const notifyBtn = document.getElementById("notify-btn");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    if (!email) {
+      alert("Please enter your email.");
+      return;
+    }
+
+    notifyBtn.disabled = true;
+    notifyBtn.textContent = "Submitting...";
+
+    try {
+      const resp = await fetch("/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email })
+      });
+
+      if (resp.ok) {
+        const text = await resp.text();
+        alert(text); 
+        if (text.toLowerCase().includes("success")) {
+          form.reset();
+        }
+      } else {
+        const errText = await resp.text();
+        alert("Error: " + errText);
+      }
+    } catch (error) {
+      alert("Network error, please try again later.");
+    } finally {
+      notifyBtn.disabled = false;
+      notifyBtn.textContent = "Notify Me";
+    }
+  });
+});
+
+        
     </script>
 </head>
 <body class="bg-gray-950 text-white">
