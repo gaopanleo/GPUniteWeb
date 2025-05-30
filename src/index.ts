@@ -10,7 +10,10 @@ export default {
         "content-type": "text/html",
       },
     }); */
-	
+	if (url.protocol === "http:") {
+            url.protocol = "https:";
+      return Response.redirect(url.toString(), 301);
+    };
 	return new Response(homeHtml(), {
 	  headers: {
 	    "content-type": "text/html",
